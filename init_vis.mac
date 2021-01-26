@@ -1,0 +1,20 @@
+/control/verbose 2
+/control/saveHistory
+
+/geo/fTrainX 0
+/geo/fTrainY 0
+/geo/fTrainZ 0
+
+/geo/fTChamberR 4
+/geo/fTrainR 2
+
+/geo/fDetX 0.5
+/geo/fDetYZ 2
+
+/geo/fRockX 300
+/geo/fRockYZ 20
+
+/run/verbose 2
+/run/numberOfThreads 1
+/run/initialize
+/control/execute vis.mac

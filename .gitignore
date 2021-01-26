@@ -1,3 +1,8 @@
+#folders
+build*
+
+*.data
+
 # Prerequisites
 *.d
 
