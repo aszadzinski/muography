@@ -30,7 +30,6 @@ virtual   void SetNewValue(G4UIcommand * command, G4String newValues);
 
     G4UIdirectory*  muographyDir;
 
-
     G4UIcmdWithADoubleAndUnit* fTrainX;
     G4UIcmdWithADoubleAndUnit* fTrainY;
     G4UIcmdWithADoubleAndUnit* fTrainZ;
@@ -43,6 +42,14 @@ virtual   void SetNewValue(G4UIcommand * command, G4String newValues);
 
     G4UIcmdWithADoubleAndUnit* fTChamberR;
     G4UIcmdWithADoubleAndUnit* fTrainR;
+
+    G4UIcmdWithAnInteger* fGunChoice;
+
+    G4UIcmdWithADoubleAndUnit* fGunPosX;
+    G4UIcmdWithADoubleAndUnit* fGunPosY;
+    G4UIcmdWithADoubleAndUnit* fGunPosZ;
+
+    G4UIcmdWithADoubleAndUnit* fGunE0;
 
 };
 

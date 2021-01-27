@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cmake -DGeant4= /data/Programs/geant4/geant4-install/lib/Geant4-10.6.3 ../
+make -j3

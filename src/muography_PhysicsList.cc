@@ -10,17 +10,16 @@
 muography_PhysicsList::muography_PhysicsList()
 :G4VModularPhysicsList()
 {
-  RegisterPhysics( new G4EmExtraPhysics());
+ //RegisterPhysics( new G4EmExtraPhysics());
   RegisterPhysics(new G4EmStandardPhysics());
   RegisterPhysics(new G4DecayPhysics());
-RegisterPhysics(new G4RadioactiveDecayPhysics());
+ // RegisterPhysics(new G4RadioactiveDecayPhysics());
 
 }
 
 muography_PhysicsList::~muography_PhysicsList()
 {
  }
-
 void muography_PhysicsList::SetCuts()
 {
   SetCutValue(7*mm, "proton");

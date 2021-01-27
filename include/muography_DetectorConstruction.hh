@@ -33,6 +33,17 @@ class muography_DetectorConstruction : public G4VUserDetectorConstruction
         G4double GetTrainZ() {return fTrainZ;}
         void SetTrainZ(G4double tmp) {fTrainZ=tmp;}
 
+        G4double GetGunChoice() {return fGunChoice;}
+        void SetGunChoice(G4double tmp) {fGunChoice=tmp;}
+        G4double GetGunPosX() {return fGunPosX;}
+        void SetGunPosX(G4double tmp) {fGunPosX=tmp;}
+        G4double GetGunPosY() {return fGunPosY;}
+        void SetGunPosY(G4double tmp) {fGunPosY=tmp;}
+        G4double GetGunPosZ() {return fGunPosZ;}
+        void SetGunPosZ(G4double tmp) {fGunPosZ=tmp;}
+        G4double GetGunE0() {return fGunE0;}
+        void SetGunE0(G4double tmp) {fGunE0=tmp;}
+
         muography_DetectorConstruction();
 
         virtual ~muography_DetectorConstruction();
@@ -53,6 +64,9 @@ class muography_DetectorConstruction : public G4VUserDetectorConstruction
 	G4double fRockX, fRockYZ;
 	G4double fDetX, fDetYZ;
 	G4double fTChamberR, fTrainR;
+
+	G4double fGunPosX, fGunPosY, fGunPosZ, fGunE0;
+	G4int fGunChoice;
 
 };
 #endif

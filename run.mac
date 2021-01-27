@@ -11,6 +11,13 @@
 /geo/fRockX 300
 /geo/fRockYZ 20
 
+/generator/fGunPosX 0
+/generator/fGunPosY 0
+/generator/fGunPosZ 0
+/generator/fGunE0 2
+
+/generator/fGunChoice 0
+
 
 /run/numberOfThreads 1
 /run/initialize

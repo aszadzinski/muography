@@ -21,6 +21,7 @@ target_link_libraries(muography_run ${Geant4_LIBRARIES})
 set(PET_SCRIPTS
   init_vis.mac
   run.mac
+  recompile
   start.py
   vis.mac)
 

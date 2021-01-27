@@ -42,6 +42,10 @@ class muography_PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
   private:
     muography_DetectorConstruction* myDetector;
     void DefineCommands();
+
+    G4int fGunChoice;
+    G4double fGunPosX, fGunPosY, fGunPosZ, fGunE0;
+
     G4double sX, sY, sZ, gTh, gPhi;
     G4double gX, gY, gZ, R,sTh,sPhi;
     G4double Energy,E0;

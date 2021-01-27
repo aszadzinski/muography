@@ -17,17 +17,11 @@ myDetector(Det)
 {
 
 
-//////////////////////////////
-// Directory
-//////////////////////////////
-
+  // DIRs
   muographyDir = new G4UIdirectory("/geo/");
   muographyDir->SetGuidance("Simulation control. Geometry");
 
-//////////////////////////////
-// Generation Parameters
-
-
+  // Geometry command
   fTrainX = new G4UIcmdWithADoubleAndUnit("/geo/fTrainX",this);
   fTrainX->SetGuidance("X Train position [m]");
   fTrainX->SetDefaultUnit("m");
@@ -62,6 +56,23 @@ myDetector(Det)
   fTChamberR->SetGuidance("Train Chamber radius [m]");
   fTChamberR->SetDefaultUnit("m");
 
+  //Particles generator command
+  fGunChoice = new G4UIcmdWithAnInteger("/generator/fGunChoice",this);
+  fGunChoice->SetGuidance("Choice of process: 0-test, 1-");
+
+  fGunPosX = new G4UIcmdWithADoubleAndUnit("/generator/fGunPosX",this);
+  fGunPosX->SetGuidance("Gun start pos X [m]");
+  fGunPosX->SetDefaultUnit("m");
+  fGunPosY = new G4UIcmdWithADoubleAndUnit("/generator/fGunPosY",this);
+  fGunPosY->SetGuidance("Gun start pos Y [m]");
+  fGunPosY->SetDefaultUnit("m");
+  fGunPosZ = new G4UIcmdWithADoubleAndUnit("/generator/fGunPosZ",this);
+  fGunPosZ->SetGuidance("Gun start pos Z [m]");
+  fGunPosZ->SetDefaultUnit("m");
+
+  fGunE0 = new G4UIcmdWithADoubleAndUnit("/generator/fGunE0",this);
+  fGunE0->SetGuidance("Muon peak energy [GeV]");
+  fGunE0->SetDefaultUnit("GeV");
 }
 
 muography_DetectorMessenger::~muography_DetectorMessenger()
@@ -78,6 +89,11 @@ muography_DetectorMessenger::~muography_DetectorMessenger()
   delete fTrainR;
   delete fRockX;
   delete fRockYZ;
+  delete fGunChoice; 
+  delete fGunPosX;
+  delete fGunPosY;
+  delete fGunPosZ;
+  delete fGunE0;
 
 }
 void muography_DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValues)
@@ -95,5 +111,10 @@ void muography_DetectorMessenger::SetNewValue(G4UIcommand* command, G4String new
    else if(command==fTrainR) myDetector->SetTrainR(fTrainR->GetNewDoubleValue(newValues));
    else if(command==fDetX) myDetector->SetDetX (fDetX->GetNewDoubleValue(newValues));
    else if(command==fDetYZ) myDetector->SetDetYZ (fDetYZ->GetNewDoubleValue(newValues));
+   else if(command==fGunPosX) myDetector->SetGunPosX(fGunPosX->GetNewDoubleValue(newValues));
+   else if(command==fGunPosY) myDetector->SetGunPosY(fGunPosY->GetNewDoubleValue(newValues));
+   else if(command==fGunPosZ) myDetector->SetGunPosZ(fGunPosZ->GetNewDoubleValue(newValues));
+   else if(command==fGunE0) myDetector->SetGunE0(fGunE0->GetNewDoubleValue(newValues));
+   else if(command==fGunChoice) myDetector->SetGunChoice(fGunChoice->GetNewIntValue(newValues));
 
 }

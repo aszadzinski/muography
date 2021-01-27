@@ -19,16 +19,35 @@ muography_PrimaryGeneratorAction::muography_PrimaryGeneratorAction(muography_Det
   G4int n_particle = 1;
   E0 = 1*keV;
   fParticleGun1  = new G4ParticleGun(n_particle);
+  fGunPosX = MyDC->GetGunPosX();
+  fGunPosY = MyDC->GetGunPosY();
+  fGunPosZ = MyDC->GetGunPosZ();
+  fGunE0 = MyDC->GetGunE0();
+  fGunChoice = MyDC->GetGunChoice();
+
   fh = 10;//MyDC->GetHeight();
   zz = 10;//MyDC->GetZ();
   dist = 10;//MyDC->GetDist();
 
-  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  G4String particleName;
-  G4ParticleDefinition* particle = particleTable->FindParticle(particleName="e+");
-  fParticleGun1->SetParticleDefinition(particle);
-  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-  fParticleGun1->SetParticleEnergy(E0);
+  if(fGunChoice==0) 
+  {
+  	G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  	G4String particleName;
+  	G4ParticleDefinition* particle = particleTable->FindParticle(particleName="mu-");
+  	fParticleGun1->SetParticleDefinition(particle);
+  	fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0.));
+  	fParticleGun1->SetParticleEnergy(fGunE0);
+  }
+  else
+  {
+  	G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  	G4String particleName;
+  	G4ParticleDefinition* particle = particleTable->FindParticle(particleName="mu-");
+  	fParticleGun1->SetParticleDefinition(particle);
+  	fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0.));
+  	fParticleGun1->SetParticleEnergy(fGunE0);
+  
+  }
 }
 
 muography_PrimaryGeneratorAction::~muography_PrimaryGeneratorAction()
@@ -57,6 +76,8 @@ void muography_PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   else
   {
   }*/
+
+/*
   R = G4UniformRand()*5*mm;
   sTh = G4UniformRand()*2*M_PI;
   sPhi = G4UniformRand()*M_PI;
@@ -84,5 +105,9 @@ void muography_PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(-sX,-sY,-sZ));
   fParticleGun1->SetParticleEnergy(Energy);
   fParticleGun1->GeneratePrimaryVertex(anEvent);
-
+*/
+  fParticleGun1->SetParticlePosition(G4ThreeVector(fGunPosX,fGunPosY,fGunPosZ));
+  fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0.));
+  fParticleGun1->SetParticleEnergy(fGunE0);
+  fParticleGun1->GeneratePrimaryVertex(anEvent);
 }

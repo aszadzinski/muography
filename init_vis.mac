@@ -5,16 +5,26 @@
 /geo/fTrainY 0
 /geo/fTrainZ 0
 
-/geo/fTChamberR 4
-/geo/fTrainR 2
+/geo/fTChamberR 2
+/geo/fTrainR 0.5
 
 /geo/fDetX 0.5
 /geo/fDetYZ 2
 
-/geo/fRockX 300
+/geo/fRockX 20
 /geo/fRockYZ 20
+
+/generator/fGunPosX -19
+/generator/fGunPosY 0
+/generator/fGunPosZ 0
+/generator/fGunE0 8
+
+/generator/fGunChoice 0
+
+
 
 /run/verbose 2
 /run/numberOfThreads 1
 /run/initialize
 /control/execute vis.mac
+/vis/modeling/trajectories/drawByCharge-0/set gamma black
