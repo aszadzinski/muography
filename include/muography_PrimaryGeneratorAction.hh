@@ -18,17 +18,17 @@ class muography_PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     void SetHeight(G4double h) {fh = h;}
     void SetZ(G4double z) {zz = z;}
 
-    inline static G4double GetHeight(G4double num=99)  {
+    inline static G4double GetPosX(G4double num=99)  {
       static double temp;
       if (num!=99) temp = num;
       return temp;
     }
-    inline static G4double GetDist(G4double num=99)  {
+    inline static G4double GetPosZ(G4double num=99)  {
       static double temp;
       if (num!=99) temp = num;
       return temp;
     }
-    inline static G4double GetZ(G4double num=99)  {
+    inline static G4double GetE(G4double num=99)  {
       static double temp;
       if (num!=99) temp = num;
       return temp;
@@ -45,6 +45,7 @@ class muography_PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
     G4int fGunChoice;
     G4double fGunPosX, fGunPosY, fGunPosZ, fGunE0;
+    G4double ffGunPosX, ffGunPosY, ffGunPosZ;
 
     G4double sX, sY, sZ, gTh, gPhi;
     G4double gX, gY, gZ, R,sTh,sPhi;

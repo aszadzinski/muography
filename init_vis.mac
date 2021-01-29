@@ -5,11 +5,11 @@
 /geo/fTrainY 0
 /geo/fTrainZ 0
 
-/geo/fTChamberR 2
-/geo/fTrainR 0.5
+/geo/fTChamberR 4
+/geo/fTrainR 1
 
 /geo/fDetX 0.5
-/geo/fDetYZ 2
+/geo/fDetYZ 20
 
 /geo/fRockX 20
 /geo/fRockYZ 20

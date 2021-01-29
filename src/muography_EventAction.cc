@@ -6,7 +6,7 @@
 #include "G4SystemOfUnits.hh"
 
 #include <fstream>
-std::ofstream file;
+std::ofstream file,file2;
 
 
 
@@ -16,11 +16,13 @@ muography_EventAction::muography_EventAction(muography_RunAction* runAction)
   EdepA(0.), EdepB(0.),EntA(0),EntB(0)
 {
   file.open("./output.dat");
+  file2.open("./output2.dat");
 }
 
 muography_EventAction::~muography_EventAction()
 {
   file.close();
+  file2.close();
 }
 
 void muography_EventAction::BeginOfEventAction(const G4Event* env)
@@ -45,10 +47,11 @@ void muography_EventAction::BeginOfEventAction(const G4Event* env)
 
 void muography_EventAction::EndOfEventAction(const G4Event*)
 {
-  if (EntA == 1 || EntB == 1)
+  if (dFlagA == 1 && dFlagB == 1)
   {
-    file<<EdepA<<" "<<EdepB<<" "<<EntA<<" "<<EntB<<" "<< hei <<" "<<zz <<" "<<dist<<G4endl;
+    file<<fGunE<<" "<<fPosX<<" "<<fPosZ<<G4endl;
   }
+    file2<<fGunE<<" "<<fPosX<<" "<<fPosZ<<" "<<dFlagA<<" "<<dFlagB<<G4endl;
   fRunAction->AddEdep(EdepA);
   //G4cout<<"Edep="<<EdepA<<G4endl;
 }

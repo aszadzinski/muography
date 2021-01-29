@@ -22,6 +22,10 @@ muography_PrimaryGeneratorAction::muography_PrimaryGeneratorAction(muography_Det
   fGunPosX = MyDC->GetGunPosX();
   fGunPosY = MyDC->GetGunPosY();
   fGunPosZ = MyDC->GetGunPosZ();
+  ffGunPosX = MyDC->GetRockYZ();
+  ffGunPosY = MyDC->GetRockYZ();
+  ffGunPosZ = MyDC->GetRockYZ();
+
   fGunE0 = MyDC->GetGunE0();
   fGunChoice = MyDC->GetGunChoice();
 
@@ -106,8 +110,20 @@ void muography_PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun1->SetParticleEnergy(Energy);
   fParticleGun1->GeneratePrimaryVertex(anEvent);
 */
-  fParticleGun1->SetParticlePosition(G4ThreeVector(fGunPosX,fGunPosY,fGunPosZ));
+  G4double fffGunPosX;
+  G4double fffGunPosY;
+  G4double fffGunPosZ;
+
+  fffGunPosX = 0.0;//(G4UniformRand()*2-1)*ffGunPosX/2;
+  fffGunPosZ = (G4UniformRand()*2-1)*ffGunPosZ/2;
+  G4double ffE = G4RandGauss::shoot(10,4)*GeV;
+  if (ffE <= 0) ffE=0;
+  fffGunPosY = (G4UniformRand()*2-1)*ffGunPosY/2;
+  GetPosX(fffGunPosY);
+  GetPosZ(fffGunPosZ);
+  GetE(ffE);
+  fParticleGun1->SetParticlePosition(G4ThreeVector(fGunPosX,fffGunPosY,fffGunPosZ));
   fParticleGun1->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0.));
-  fParticleGun1->SetParticleEnergy(fGunE0);
+  fParticleGun1->SetParticleEnergy(ffE);
   fParticleGun1->GeneratePrimaryVertex(anEvent);
 }

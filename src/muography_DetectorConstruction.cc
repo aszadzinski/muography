@@ -112,12 +112,12 @@ G4VPhysicalVolume* muography_DetectorConstruction::Construct()
     fEdT = logicTrain;
 
     //Detectors
-    G4Box* detectorShapeA = new G4Box("DetectorA", fDetX/2, fDetYZ/2, fDetYZ/2);
+    G4Box* detectorShapeA = new G4Box("ADetector", fDetX/2, fDetYZ/2, fDetYZ/2);
     G4LogicalVolume* logicDetectorA = new G4LogicalVolume(detectorShapeA, BC408, "ADetector");
     G4PVPlacement *physDetectorA =  new G4PVPlacement(0, posDA, logicDetectorA, "ADetector", logicWorld, false, 0, checkOverlaps);
     fEdA = logicDetectorA;
 
-    G4Box* detectorShapeB = new G4Box("DetectorA", fDetX/2, fDetYZ/2, fDetYZ/2);
+    G4Box* detectorShapeB = new G4Box("BDetector", fDetX/2, fDetYZ/2, fDetYZ/2);
     G4LogicalVolume* logicDetectorB = new G4LogicalVolume(detectorShapeB, BC408, "BDetector");
     G4PVPlacement *physDetectorB =  new G4PVPlacement(0, posDB, logicDetectorB, "BDetector", logicWorld, false, 0, checkOverlaps);
     fEdB = logicDetectorB;

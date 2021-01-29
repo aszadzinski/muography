@@ -3,10 +3,10 @@
 import random
 from itertools import count
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 import os
 import subprocess
 import time
+from sys import argv
 import numpy as np
 
 #plt.style.use('ggplot')
@@ -17,24 +17,15 @@ y_values = []
 nlines = 0
 
 
-def animate(i):
-    global nlines
-    with open("output.dat","r") as file:
-        x = file.readlines()
-        x_values = [ float(var[:-1]) for var in x]
-    plt.cla()
-    N,U,c = plt.hist( x_values,histtype="step", bins=np.linspace(0,200,100),label="$N(E)$")
-    mean = (N*U[:-1]).sum()/N.sum()
-    plt.title("$E_m$= {} MeV".format(round(mean,4)))
-    plt.xlabel("$E [MeV]$")
-    plt.ylabel("$Counts$")
-    plt.legend()
 
 
 if __name__ == "__main__":
-    #os.system("./muon_run run.mac")
-    subprocess.Popen(["./muon_run","run.mac"])
-    time.sleep(1)
-    ani = FuncAnimation(plt.gcf(), animate)
-    plt.tight_layout()
+    with open(argv[1],'r') as file:
+        lines = file.readlines()
+        data = [ i[:-1].split() for i in lines ]
+        data = np.array(data,dtype='float64').T
+    plt.hist2d(data[1],data[2],bins=int(argv[2]))
+    plt.xlabel("X ")
+    plt.ylabel("Y ")
+    plt.legend()
     plt.show()

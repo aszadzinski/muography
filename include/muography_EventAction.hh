@@ -26,6 +26,9 @@ class muography_EventAction : public G4UserEventAction
     void SetEntB(G4int entb) { EntB=entb; }
     void SetHeight(G4double h){hei = h;}
     void SetZ(G4double z){zz = z;}
+    void SetPosX(G4double x){fPosX = x;}
+    void SetPosZ(G4double z){fPosZ = z;}
+    void SetE(G4double e){fGunE = e;}
     void SetDist(G4double z){dist = z;}
 
 
@@ -33,6 +36,7 @@ class muography_EventAction : public G4UserEventAction
     muography_RunAction* fRunAction;
     G4double        EdepA, EdepB, posAX,posAY,posAZ, posBX,posBY,posBZ,hei,zz,dist;
     G4int           dFlagA=0;
+    G4double fPosX, fPosY, fPosZ, fGunE;
     G4int           dFlagB=0;
     G4int  EntA, EntB;
 };

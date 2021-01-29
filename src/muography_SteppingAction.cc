@@ -34,14 +34,14 @@ void muography_SteppingAction::UserSteppingAction(const G4Step* theStep)
   G4int lastParticle = 0;
   if(thePostPV !=0 ){ thePostPVname = thePostPV->GetName(); }
   if (theStep->GetTotalEnergyDeposit()==0) {return;}
-  fEventAction->SetHeight(muography_PrimaryGeneratorAction::GetHeight());
-  fEventAction->SetZ(muography_PrimaryGeneratorAction::GetZ());
-  fEventAction->SetDist(muography_PrimaryGeneratorAction::GetDist());
+  fEventAction->SetPosX(muography_PrimaryGeneratorAction::GetPosX());
+  fEventAction->SetPosZ(muography_PrimaryGeneratorAction::GetPosZ());
+  //G4cout<<muography_PrimaryGeneratorAction::GetPosZ()<<"---pos"<<G4endl;
+  fEventAction->SetE(muography_PrimaryGeneratorAction::GetE());
 
 
   if (thePrePVname(0,9)=="ADetector")
   {
-
     fEventAction->SetEdepA(theStep->GetTotalEnergyDeposit());
     fEventAction->SetEntA(1);
     fEventAction->SetPosA(theTrack->GetPosition().x(),
